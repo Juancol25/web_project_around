@@ -25,9 +25,9 @@ const initialCards = [
   },
 ];
 
-const profileName = document.querySelector(".profile__info_name");
-const profileAbout = document.querySelector(".profile__info_ocupation");
-const editButton = document.querySelector(".profile__info_edit");
+const profileName = document.querySelector(".profile__name");
+const profileAbout = document.querySelector(".profile__occupation");
+const editButton = document.querySelector(".profile__edit-button");
 const popup = document.querySelector(".popup_type_profile");
 const popupForm = popup.querySelector(".popup__form");
 const closeButton = popup.querySelector(".popup__close");

@@ -40,7 +40,7 @@
   align-items: center;
 }
 
-.profile__info_name {
+.profile__name {
   grid-area: name;
   max-width: 373px;
   margin: 0;
@@ -52,7 +52,7 @@
   text-overflow: ellipsis;
 }
 
-.profile__info_edit {
+.profile__edit-button {
   grid-area: edit;
   width: 24px;
   height: 24px;
@@ -66,11 +66,11 @@
   cursor: pointer;
 }
 
-.profile__info_edit:hover {
+.profile__edit-button:hover {
   opacity: 0.6;
 }
 
-.profile__info_ocupation {
+.profile__occupation {
   grid-area: about;
   max-width: 415px;
   margin: 16px 0 0;
@@ -120,20 +120,20 @@
     justify-content: center;
   }
 
-  .profile__info_name {
+  .profile__name {
     max-width: 196px;
     font-size: 22px;
     line-height: 1.21;
     text-align: center;
   }
 
-  .profile__info_edit {
+  .profile__edit-button {
     width: 18px;
     height: 18px;
     background-size: 7.5px 7.5px;
   }
 
-  .profile__info_ocupation {
+  .profile__occupation {
     max-width: 282px;
     margin-top: 14px;
     font-size: 14px;
