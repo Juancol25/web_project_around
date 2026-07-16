@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Juan Diego Pardo" />
+    <meta
+      name="description"
+      content="Proyecto Alrededor de los EE.UU. del Sprint 8"
+    />
+    <meta name="keywords" content="around, viajes, aventura" />
+    <title>Alrededor de los EE.UU.</title>
+
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
+
+  <body>
+    <div class="page">
+      <header class="header">
+        <img
+          class="header__logo"
+          src="./images/Vector.svg"
+          alt="Around The U.S."
+        />
+        <div class="header__line"></div>
+      </header>
+
+      <main class="main">
+        <section class="profile" aria-label="Perfil del usuario">
+          <div class="profile__avatar">
+            <img
+              class="profile__img"
+              src="./images/Avatar.png"
+              alt="Retrato de Jacques Cousteau"
+            />
+          </div>
+
+          <div class="profile__info">
+            <h1 class="profile__name">Jacques Cousteau</h1>
+            <button
+              class="profile__edit-button"
+              type="button"
+              aria-label="Editar perfil"
+            ></button>
+            <p class="profile__occupation">Explorer Extraordinary</p>
+          </div>
+
+          <button
+            class="profile__add-button"
+            type="button"
+            aria-label="Agregar tarjeta"
+          >
+            <img
+              class="profile__add-button-image"
+              src="./images/Vector (1).svg"
+              alt=""
+            />
+          </button>
+        </section>
+
+        <ul class="elements"></ul>
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text"> 2024 Around The U.S.</p>
+      </footer>
+
+      <div class="popup popup_type_profile">
+        <div class="popup__container">
+          <button
+            class="popup__close"
+            type="button"
+            aria-label="Cerrar ventana"
+          ></button>
+          <form class="popup__form" novalidate>
+            <h2 class="popup__title">Editar perfil</h2>
+            <label class="popup__form-label">
+              <input
+                class="popup__input popup__input_name"
+                type="text"
+                name="name"
+                placeholder="Nombre"
+                required
+                minlength="2"
+                maxlength="40"
+              />
+              <span id="error-name" class="popup__error"></span>
+            </label>
+            <label class="popup__form-label">
+              <input
+                class="popup__input popup__input_ocupation"
+                type="text"
+                name="about"
+                placeholder="Acerca de mi"
+                minlength="2"
+                maxlength="200"
+                required
+              />
+              <span id="error-about" class="popup__error"></span>
+            </label>
+            <button class="popup__button popup__button_profile" type="submit">
+              Guardar
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_type_new-card">
+        <div class="popup__container">
+          <button
+            class="popup__close"
+            type="button"
+            aria-label="Cerrar ventana"
+          ></button>
+          <form class="popup__form" novalidate>
+            <h2 class="popup__title">Nuevo lugar</h2>
+            <label class="popup__form-label">
+              <input
+                class="popup__input popup__input_card-name"
+                type="text"
+                name="name"
+                placeholder="Título"
+                required
+                minlength="2"
+                maxlength="30"
+              />
+              <span id="error-card-name" class="popup__error"></span>
+            </label>
+            <label class="popup__form-label">
+              <input
+                class="popup__input popup__input_card-link"
+                type="url"
+                name="link"
+                placeholder="Enlace a la imagen"
+                required
+              />
+              <span id="error-card-link" class="popup__error"></span>
+            </label>
+            <button class="popup__button popup__button_card" type="submit">
+              Crear
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_type_image">
+        <div class="popup__container popup__container_type_image">
+          <button
+            class="popup__close"
+            type="button"
+            aria-label="Cerrar ventana"
+          ></button>
+          <img class="popup__image" src="" alt="" />
+          <p class="popup__caption"></p>
+        </div>
+      </div>
+    </div>
+
+    <template id="placetemplate">
+      <li class="element">
+        <img class="element__image" alt="" />
+        <button
+          class="element__delete-button"
+          type="button"
+          aria-label="Eliminar tarjeta"
+        ></button>
+        <div class="element__white">
+          <h2 class="element__white_title"></h2>
+          <button
+            class="element__white_button"
+            type="button"
+            aria-label="Me gusta"
+          ></button>
+        </div>
+      </li>
+    </template>
+
+    <script src="./scripts/index.js" type="module"></script>
+  </body>
+</html>
