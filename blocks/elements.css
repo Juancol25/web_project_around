@@ -23,6 +23,11 @@
   aspect-ratio: 1 / 1;
   object-fit: cover;
   cursor: pointer;
+  transition: opacity 0.2s linear;
+}
+
+.element__image:hover {
+  opacity: 0.85;
 }
 
 .element__delete-button {
@@ -45,7 +50,7 @@
   opacity: 0.6;
 }
 
-.element__white {
+.element__info {
   min-height: 79px;
   padding: 0 15px 0 21px;
   box-sizing: border-box;
@@ -54,7 +59,7 @@
   align-items: center;
 }
 
-.element__white_title {
+.element__title {
   min-width: 0;
   margin: 0;
   color: #000000;
@@ -66,7 +71,7 @@
   text-overflow: ellipsis;
 }
 
-.element__white_button {
+.element__like-button {
   width: 21px;
   height: 19px;
   margin-left: 15px;
@@ -81,11 +86,11 @@
   cursor: pointer;
 }
 
-.element__white_button:hover {
+.element__like-button:hover {
   opacity: 0.5;
 }
 
-.element__white_button_active {
+.element__like-button_active {
   background-image: url("../images/likeactive.svg");
 }
 

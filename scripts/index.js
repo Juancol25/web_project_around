@@ -1,15 +1,15 @@
 const initialCards = [
   {
     name: "Yosemite Valley",
-    link: "./images/Valle de Yosemite.png",
+    link: "./images/yosemite-valley.png",
   },
   {
     name: "Lake Louise",
-    link: "./images/Lago Louise.png",
+    link: "./images/lake-louise.png",
   },
   {
     name: "Bald Mountains",
-    link: "./images/Montañas Calvas.png",
+    link: "./images/bald-mountains.png",
   },
   {
     name: "Latemar",
@@ -17,11 +17,11 @@ const initialCards = [
   },
   {
     name: "Vanoise National Park",
-    link: "./images/Vanois National....png",
+    link: "./images/vanoise-national-park.png",
   },
   {
     name: "Lago di Braies",
-    link: "./images/Lago di Braies.png",
+    link: "./images/lago-di-braies.png",
   },
 ];
 
@@ -33,7 +33,7 @@ const addButton = document.querySelector(".profile__add-button");
 const popupProfile = document.querySelector(".popup_type_profile");
 const popupProfileForm = popupProfile.querySelector(".popup__form");
 const nameInput = popupProfile.querySelector(".popup__input_name");
-const aboutInput = popupProfile.querySelector(".popup__input_ocupation");
+const aboutInput = popupProfile.querySelector(".popup__input_occupation");
 
 const popupNewCard = document.querySelector(".popup_type_new-card");
 const popupNewCardForm = popupNewCard.querySelector(".popup__form");
@@ -47,17 +47,47 @@ const popupCaption = popupImage.querySelector(".popup__caption");
 const elementsList = document.querySelector(".elements");
 const cardTemplate = document.querySelector("#placetemplate").content;
 
+const validationConfig = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+};
+
+function handleEscKeydown(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_opened");
+    closePopup(openedPopup);
+  }
+}
+
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener("keydown", handleEscKeydown);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener("keydown", handleEscKeydown);
+
+  const formElement = popup.querySelector(".popup__form");
+  if (formElement) {
+    resetValidation(formElement, validationConfig);
+  }
+}
+
+function handleOverlayClick(evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.currentTarget);
+  }
 }
 
 function openEditPopup() {
   nameInput.value = profileName.textContent;
   aboutInput.value = profileAbout.textContent;
+  resetValidation(popupProfileForm, validationConfig);
   openPopup(popupProfile);
 }
 
@@ -72,6 +102,7 @@ function handleProfileFormSubmit(evt) {
 
 function openNewCardPopup() {
   popupNewCardForm.reset();
+  resetValidation(popupNewCardForm, validationConfig);
   openPopup(popupNewCard);
 }
 
@@ -95,7 +126,7 @@ function openImagePopup(name, link) {
 }
 
 function handleLikeButtonClick(evt) {
-  evt.target.classList.toggle("element__white_button_active");
+  evt.target.classList.toggle("element__like-button_active");
 }
 
 function handleDeleteButtonClick(evt) {
@@ -106,8 +137,8 @@ function handleDeleteButtonClick(evt) {
 function createCardElement(name, link) {
   const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
   const cardImage = cardElement.querySelector(".element__image");
-  const cardTitle = cardElement.querySelector(".element__white_title");
-  const likeButton = cardElement.querySelector(".element__white_button");
+  const cardTitle = cardElement.querySelector(".element__title");
+  const likeButton = cardElement.querySelector(".element__like-button");
   const deleteButton = cardElement.querySelector(".element__delete-button");
 
   cardImage.src = link;
@@ -140,3 +171,9 @@ document.querySelectorAll(".popup__close").forEach((closeButton) => {
     closePopup(closeButton.closest(".popup"));
   });
 });
+
+document.querySelectorAll(".popup").forEach((popup) => {
+  popup.addEventListener("mousedown", handleOverlayClick);
+});
+
+enableValidation(validationConfig);
