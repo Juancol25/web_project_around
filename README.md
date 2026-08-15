@@ -51,8 +51,6 @@ ES6 y modulos.
 
 ## GitHub Pages
 
-Enlace al sitio publicado:
-https://juancol25.github.io/web_project_around/
+Sitio publicado: https://juancol25.github.io/web_project_around/
 
-Repositorio:
-https://github.com/Juancol25/web_project_around
+Repositorio: https://github.com/Juancol25/web_project_around
