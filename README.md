@@ -28,21 +28,33 @@ ES6 y modulos.
 - HTML5 semantico.
 - CSS con metodologia BEM Flat.
 - Flexbox y CSS Grid.
-- JavaScript con clases ES6 (`Card`, `FormValidator`) y modulos
-  (`import`/`export`).
+- JavaScript con clases ES6 (`Card`, `FormValidator`, `Section`, `Popup`,
+  `PopupWithImage`, `PopupWithForm`, `UserInfo`) y modulos
+  (`import`/`export`), con acoplamiento debil entre ellas.
 - Validacion de formularios con la API de restriccion nativa (ValidityState).
 - Normalize.css y fuentes Inter.
 
 ## Estructura del codigo JavaScript
 
-- `scripts/Card.js` — clase `Card`, encargada de generar cada tarjeta de
-  lugar y de su propio comportamiento (like, eliminar, abrir imagen).
-- `scripts/FormValidator.js` — clase `FormValidator`, encargada de validar
-  un formulario segun un objeto de configuracion.
-- `scripts/utils.js` — funciones y controladores compartidos para abrir y
-  cerrar las ventanas emergentes.
+- `scripts/components/Card.js` — clase `Card`, encargada de generar cada
+  tarjeta de lugar y de su propio comportamiento (like, eliminar, abrir
+  imagen mediante un callback recibido en el constructor).
+- `scripts/components/FormValidator.js` — clase `FormValidator`, encargada
+  de validar un formulario segun un objeto de configuracion.
+- `scripts/components/Section.js` — clase `Section`, encargada de
+  renderizar una lista de elementos dentro de un contenedor de la pagina.
+- `scripts/components/Popup.js` — clase `Popup`, clase padre encargada de
+  abrir y cerrar una ventana emergente (clic en el icono de cierre, clic
+  fuera del formulario y tecla Esc).
+- `scripts/components/PopupWithImage.js` — clase hija de `Popup`,
+  encargada de mostrar la imagen ampliada de una tarjeta.
+- `scripts/components/PopupWithForm.js` — clase hija de `Popup`,
+  encargada de recolectar los datos de un formulario y enviarlos mediante
+  un callback recibido en el constructor.
+- `scripts/components/UserInfo.js` — clase `UserInfo`, encargada de leer
+  y actualizar la informacion del perfil en la pagina.
 - `scripts/index.js` — punto de entrada: importa las clases anteriores,
-  crea sus instancias y conecta la interfaz.
+  crea sus instancias y conecta los detectores de eventos de la interfaz.
 
 ## Capturas de pantalla
 
